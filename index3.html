@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jung-Woo Shin — Product Designer, Systems &amp; AI</title>
+<meta name="description" content="Jung-Woo Shin — AI Design Engineer at Samsung. System UI, cross-device continuity, and AI prototypes built end-to-end. 10+ years designing Galaxy experiences used by hundreds of millions.">
+<meta property="og:title" content="Jung-Woo Shin — Product Designer, Systems & AI">
+<meta property="og:description" content="System UI · Cross-device UX · AI design engineering. Selected work from Samsung Galaxy One UI and personal AI agents.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0e0f12" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f7f8fa" media="(prefers-color-scheme: light)">
+<style>
+  :root {
+    --bg: #0e0f12;
+    --surface: #16181d;
+    --surface-2: #1d2026;
+    --text: #e8eaed;
+    --text-dim: #9aa0a8;
+    --accent: #6ea8fe;
+    --accent-warm: #ffb86b;
+    --border: #262a31;
+    --radius: 16px;
+    --max: 1080px;
+    --nav-h: 60px;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f7f8fa;
+      --surface: #ffffff;
+      --surface-2: #eef0f4;
+      --text: #1a1c20;
+      --text-dim: #5c636e;
+      --accent: #2e5aac;
+      --accent-warm: #c26a1b;
+      --border: #e2e5ea;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 12px); }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  .skip {
+    position: absolute; left: -9999px; top: 0; z-index: 100;
+    background: var(--accent); color: #fff; padding: 8px 16px; font-weight: 600;
+  }
+  .skip:focus { left: 16px; top: 12px; }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    height: var(--nav-h);
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    height: var(--nav-h); gap: 16px;
+  }
+  nav .logo { font-weight: 700; letter-spacing: -0.02em; color: var(--text); white-space: nowrap; }
+  nav .links {
+    display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px 0;
+  }
+  nav .links a {
+    color: var(--text-dim); margin-left: 20px; font-size: 14px;
+  }
+  nav .links a:hover { color: var(--text); text-decoration: none; }
+  @media (max-width: 560px) {
+    nav .links a { margin-left: 12px; font-size: 13px; }
+  }
+
+  /* Hero */
+  header.hero { padding: 88px 0 56px; }
+  .hero .kicker {
+    color: var(--accent); font-size: 14px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-size: clamp(30px, 5.2vw, 52px);
+    line-height: 1.14; letter-spacing: -0.03em; font-weight: 750;
+    max-width: 20ch;
+  }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero p.lede {
+    margin-top: 22px; font-size: 18px; color: var(--text-dim); max-width: 58ch;
+  }
+  .hero .meta { margin-top: 28px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .chip {
+    font-size: 13px; padding: 6px 14px; border-radius: 100px;
+    border: 1px solid var(--border); background: var(--surface); color: var(--text-dim);
+  }
+  .stats {
+    margin-top: 40px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+    padding: 20px 0 0; border-top: 1px solid var(--border);
+  }
+  @media (max-width: 640px) { .stats { grid-template-columns: 1fr 1fr; } }
+  .stat { padding: 8px 0; }
+  .stat .n {
+    font-size: 28px; font-weight: 750; letter-spacing: -0.03em; color: var(--text);
+    line-height: 1.15;
+  }
+  .stat .l { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+
+  /* Sections */
+  section { padding: 64px 0; }
+  .section-title {
+    font-size: 13px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--text-dim); margin-bottom: 32px;
+  }
+  .section-title::before {
+    content: ""; display: inline-block; width: 24px; height: 2px;
+    background: var(--accent); vertical-align: middle; margin-right: 12px;
+  }
+  .section-lede { color: var(--text-dim); font-size: 16px; max-width: 64ch; margin: -16px 0 36px; }
+
+  /* Case study cards */
+  .case {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px;
+    margin-bottom: 32px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .case:hover {
+    border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+    box-shadow: 0 12px 40px color-mix(in srgb, #000 18%, transparent);
+  }
+  .case .tag { font-size: 13px; color: var(--accent-warm); font-weight: 600; }
+  .case h2 { font-size: 28px; letter-spacing: -0.02em; margin: 8px 0 4px; }
+  .case .sub { color: var(--text-dim); font-size: 15px; margin-bottom: 18px; max-width: 62ch; }
+  .impact {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;
+  }
+  .impact span {
+    font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 100px;
+    background: var(--surface-2); color: var(--text-dim); border: 1px solid var(--border);
+  }
+  .impact span strong { color: var(--text); font-weight: 700; }
+  .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 8px; }
+  @media (max-width: 760px) {
+    .case-grid { grid-template-columns: 1fr; }
+    .case { padding: 28px 20px; }
+  }
+  .case h3 {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--text-dim); margin-bottom: 8px; font-weight: 700;
+  }
+  .case p, .case li { font-size: 15px; color: var(--text); }
+  .case ul { padding-left: 20px; margin-top: 4px; }
+  .case li { margin-bottom: 6px; }
+  .case .outcome {
+    margin-top: 28px; padding: 20px 24px; border-radius: 12px;
+    background: var(--surface-2); border-left: 3px solid var(--accent);
+    font-size: 15px;
+  }
+  .case .outcome blockquote {
+    margin-top: 10px; padding-left: 14px; border-left: 2px solid var(--accent-warm);
+    color: var(--text-dim); font-style: italic;
+  }
+  .case .outcome blockquote cite { font-style: normal; font-size: 13px; }
+
+  /* Images */
+  .media-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 28px;
+  }
+  .media-row figure {
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .media-row .img-frame {
+    background: #0a0b0e;
+    min-height: 200px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 12px;
+  }
+  @media (prefers-color-scheme: light) {
+    .media-row .img-frame { background: #e8eaef; }
+  }
+  .media-row img {
+    width: 100%; max-height: 280px;
+    object-fit: contain; display: block;
+  }
+  .media-row img.phone {
+    max-height: 360px; width: auto; max-width: 100%;
+  }
+  .media-row figcaption {
+    font-size: 12px; color: var(--text-dim); padding: 10px 14px;
+    border-top: 1px solid var(--border);
+  }
+  .media-row figcaption .src {
+    display: block; margin-top: 2px; opacity: 0.75; font-size: 11px;
+  }
+  .media-row figcaption .src a { color: var(--text-dim); }
+
+  /* Volume diagram (reconstructed — public press shots scarce) */
+  .vol-compare {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px;
+  }
+  @media (max-width: 640px) { .vol-compare { grid-template-columns: 1fr; } }
+  .vol-card {
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px; overflow: hidden;
+  }
+  .vol-card .label {
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 14px;
+  }
+  .vol-card .label em {
+    font-style: normal; color: var(--accent-warm); margin-left: 6px;
+  }
+  .phone-mock {
+    position: relative; width: 100%; max-width: 200px; margin: 0 auto;
+    aspect-ratio: 9 / 16;
+    background: linear-gradient(160deg, #1a2744 0%, #0c1220 55%, #1a1520 100%);
+    border-radius: 22px; border: 2px solid #3a4050;
+    overflow: hidden;
+  }
+  .phone-mock .content-lines {
+    position: absolute; inset: 28px 16px 16px;
+    opacity: 0.35;
+  }
+  .phone-mock .content-lines span {
+    display: block; height: 8px; background: #8ab4ff; border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .phone-mock .content-lines span:nth-child(2) { width: 80%; }
+  .phone-mock .content-lines span:nth-child(3) { width: 65%; }
+  .phone-mock .content-lines span:nth-child(4) { width: 90%; height: 48px; opacity: 0.5; }
+  /* Before: large horizontal volume block */
+  .vol-old {
+    position: absolute; top: 22%; left: 10%; right: 10%;
+    background: rgba(40, 44, 56, 0.95);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px; padding: 14px 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+  .vol-old .row {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+  }
+  .vol-old .row:last-child { margin-bottom: 0; }
+  .vol-old .ico {
+    width: 16px; height: 16px; border-radius: 4px;
+    background: rgba(255,255,255,0.25); flex-shrink: 0;
+  }
+  .vol-old .bar {
+    flex: 1; height: 6px; border-radius: 3px;
+    background: rgba(255,255,255,0.12);
+    position: relative;
+  }
+  .vol-old .bar::after {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 55%; border-radius: 3px; background: #6ea8fe;
+  }
+  .vol-old .row:nth-child(2) .bar::after { width: 70%; }
+  .vol-old .row:nth-child(3) .bar::after { width: 40%; }
+  .vol-old .row:nth-child(4) .bar::after { width: 25%; }
+  /* After: slim vertical key-aligned */
+  .vol-new {
+    position: absolute; right: 10px; top: 18%; bottom: 28%;
+    width: 28px;
+    background: rgba(40, 44, 56, 0.92);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 16px;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 10px 0; gap: 8px;
+  }
+  .vol-new .ico {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+  }
+  .vol-new .track {
+    flex: 1; width: 6px; border-radius: 3px;
+    background: rgba(255,255,255,0.12); position: relative;
+  }
+  .vol-new .track::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+    height: 62%; border-radius: 3px; background: #6ea8fe;
+  }
+  .vol-new .keys {
+    position: absolute; right: -6px; top: 30%;
+    width: 3px; height: 36px; border-radius: 2px;
+    background: #5a6270;
+  }
+  .vol-note {
+    margin-top: 12px; font-size: 12px; color: var(--text-dim); text-align: center;
+  }
+
+  /* AI Lab */
+  .lab-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 900px) { .lab-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .lab-grid { grid-template-columns: 1fr; } }
+  .lab-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px;
+    display: flex; flex-direction: column;
+    transition: border-color 0.2s ease;
+  }
+  .lab-card:hover {
+    border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+  }
+  .lab-card .lab-tag {
+    font-size: 12px; color: var(--accent-warm); font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .lab-card h3 { font-size: 19px; letter-spacing: -0.01em; margin: 10px 0 4px; }
+  .lab-card .lab-meta { font-size: 13px; color: var(--text-dim); margin-bottom: 14px; }
+  .lab-card p { font-size: 15px; color: var(--text); flex: 1; }
+  .lab-card .lab-stat {
+    margin-top: 16px; font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 12px; color: var(--accent); font-weight: 600; line-height: 1.45;
+  }
+  .lab-card .pat-link { margin-top: 12px; font-size: 14px; font-weight: 600; }
+
+  /* Timeline */
+  .timeline { border-left: 2px solid var(--border); margin-left: 8px; padding-left: 32px; }
+  .t-item { position: relative; padding-bottom: 36px; }
+  .t-item:last-child { padding-bottom: 0; }
+  .t-item::before {
+    content: ""; position: absolute; left: -39px; top: 6px;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--accent); border: 3px solid var(--bg);
+  }
+  .t-item .years { font-size: 13px; color: var(--accent-warm); font-weight: 600; }
+  .t-item h3 { font-size: 18px; margin: 2px 0 4px; letter-spacing: -0.01em; }
+  .t-item p { color: var(--text-dim); font-size: 15px; max-width: 62ch; }
+
+  /* Patents */
+  .patent-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 760px) { .patent-grid { grid-template-columns: 1fr; } }
+  .patent {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px;
+    display: flex; flex-direction: column;
+  }
+  .patent .pat-no {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 13px; color: var(--accent-warm); font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .patent h3 { font-size: 19px; letter-spacing: -0.01em; margin: 10px 0 4px; }
+  .patent .pat-meta { font-size: 13px; color: var(--text-dim); margin-bottom: 14px; }
+  .patent p { font-size: 15px; color: var(--text); flex: 1; }
+  .patent .pat-link { margin-top: 18px; font-size: 14px; font-weight: 600; }
+  .patent .pat-fig {
+    margin: 16px 0 0;
+    background: #fff; border-radius: 10px; border: 1px solid var(--border);
+    padding: 10px; display: flex; align-items: center; justify-content: center;
+    min-height: 160px;
+  }
+  .patent .pat-fig img {
+    max-width: 100%; max-height: 200px; object-fit: contain; display: block;
+  }
+  .pat-note { margin-top: 24px; font-size: 14px; color: var(--text-dim); }
+
+  /* Footer / contact */
+  footer { padding: 72px 0 96px; border-top: 1px solid var(--border); margin-top: 48px; }
+  footer h2 { font-size: 32px; letter-spacing: -0.02em; margin-bottom: 12px; }
+  footer p { color: var(--text-dim); max-width: 52ch; }
+  .contact-links { margin-top: 24px; display: flex; gap: 20px; flex-wrap: wrap; font-size: 15px; font-weight: 600; }
+  .credit {
+    margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--text-dim); max-width: 70ch; line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#work">Skip to work</a>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#">Jung-Woo Shin</a>
+    <span class="links">
+      <a href="#work">Work</a>
+      <a href="#career">Career</a>
+      <a href="#patents">Patents</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">AI Design Engineer · Samsung Electronics</div>
+    <h1>I design the <em>system layer</em> Galaxy users touch every day — and build the AI tooling behind it.</h1>
+    <p class="lede">
+      Systems software engineer turned product designer. Eight years on Android system
+      experiences at Samsung — Settings, System UI, and PC–tablet–phone continuity —
+      plus end-to-end AI agents I design and ship on the same hardware I design for at work.
+    </p>
+    <div class="meta">
+      <span class="chip">Android System UI</span>
+      <span class="chip">Cross-Device UX</span>
+      <span class="chip">Design Systems</span>
+      <span class="chip">AI Prototyping · Kotlin / Compose</span>
+      <span class="chip">LLM Workflow Tooling</span>
+      <span class="chip">Figma</span>
+    </div>
+    <div class="stats" aria-label="Highlights">
+      <div class="stat">
+        <div class="n">13+</div>
+        <div class="l">Years at Samsung<br>(eng → design)</div>
+      </div>
+      <div class="stat">
+        <div class="n">2</div>
+        <div class="l">Granted UX patents<br>on foldables &amp; ambient UI</div>
+      </div>
+      <div class="stat">
+        <div class="n">100M+</div>
+        <div class="l">Devices shipping<br>patterns I helped define</div>
+      </div>
+      <div class="stat">
+        <div class="n">3</div>
+        <div class="l">Shipped system cases<br>featured below</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-title">Selected Work</div>
+    <p class="section-lede">
+      Platform surfaces used daily across the Galaxy lineup — from initiating a redesign
+      nobody planned, to patterns that stuck for generations of One UI.
+    </p>
+
+    <!-- Case 1: Game Booster -->
+    <article class="case">
+      <span class="tag">One UI 8.5 · System UI · Initiated &amp; led</span>
+      <h2>Game Booster Redesign</h2>
+      <p class="sub">Nobody was planning to touch Game Booster. I made the case that it was overdue — then led a 7-person team to ship the redesign on an aggressive timeline.</p>
+      <div class="impact">
+        <span><strong>Role</strong> Initiator · UI lead</span>
+        <span><strong>Team</strong> 7 (design + eng)</span>
+        <span><strong>Ship</strong> One UI 8.5</span>
+        <span><strong>Scope</strong> Galaxy lineup</span>
+      </div>
+      <div class="case-grid">
+        <div>
+          <h3>Challenge</h3>
+          <p>
+            Gaming is where system UI is most intrusive: players need performance control,
+            notification management, and capture tools — without leaving the game or
+            breaking immersion. The existing panel forced players out of gameplay to change
+            settings, and it had been untouched for years. It wasn't on anyone's roadmap;
+            I proposed the redesign, built the case, and got leadership and the development
+            team committed to it.
+          </p>
+        </div>
+        <div>
+          <h3>My role &amp; approach</h3>
+          <ul>
+            <li>UI designer and initiator on a 7-person team — visual designer, animation designer, and developers — coordinating design and engineering against a compressed schedule</li>
+            <li>In-context panel: adjust settings, view live stats (FPS / CPU / GPU / RAM), and capture — without exiting gameplay</li>
+            <li>Three color-coded performance modes (Performance / Balanced / Battery Saver) with per-game saved configurations</li>
+            <li>Anti-interference gesture system preventing accidental status-bar pulls, navigation gestures, and assistant triggers mid-game</li>
+            <li>Four notification styles (System / Pop-up / Bubble / Dash pill) tunable for transparency, animation, and sound</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outcome">
+        <strong>Outcome:</strong> Shipped in One UI 8.5 across the Galaxy lineup. Community
+        response to the redesign has been strongly positive:
+        <blockquote>
+          "One UI 8.5 is shaping up to be one of Samsung's most meaningful updates in years."
+          — <cite><a href="https://sammyguru.com/game-booster-one-ui-8-5-all-changes/" target="_blank" rel="noopener">SammyGuru, on the Game Booster overhaul</a></cite>
+        </blockquote>
+      </div>
+      <div class="media-row">
+        <figure>
+          <div class="img-frame">
+            <img src="assets/game-booster-1.jpg" alt="Game Booster panel on One UI 8.5 showing live performance stats and controls" width="1170" height="540" loading="lazy">
+          </div>
+          <figcaption>
+            Redesigned in-game panel with live performance stats
+            <span class="src">Source: <a href="https://sammyguru.com/game-booster-one-ui-8-5-all-changes/" target="_blank" rel="noopener">SammyGuru</a> (public review)</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <div class="img-frame">
+            <img src="assets/game-booster-2.jpg" alt="Game Booster performance modes and settings UI" width="1170" height="540" loading="lazy">
+          </div>
+          <figcaption>
+            Performance modes &amp; in-panel settings
+            <span class="src">Source: <a href="https://sammyguru.com/game-booster-one-ui-8-5-all-changes/" target="_blank" rel="noopener">SammyGuru</a></span>
+          </figcaption>
+        </figure>
+        <figure>
+          <div class="img-frame">
+            <img src="assets/game-booster-3.jpg" alt="Game Booster notification and interference controls" width="1170" height="540" loading="lazy">
+          </div>
+          <figcaption>
+            Notification styles &amp; anti-interference controls
+            <span class="src">Source: <a href="https://sammyguru.com/game-booster-one-ui-8-5-all-changes/" target="_blank" rel="noopener">SammyGuru</a></span>
+          </figcaption>
+        </figure>
+        <figure>
+          <div class="img-frame">
+            <img src="assets/game-booster-4.jpg" alt="Game Booster additional panel detail on One UI 8.5" width="1170" height="540" loading="lazy">
+          </div>
+          <figcaption>
+            Capture &amp; extended tools without leaving the game
+            <span class="src">Source: <a href="https://sammyguru.com/game-booster-one-ui-8-5-all-changes/" target="_blank" rel="noopener">SammyGuru</a></span>
+          </figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <!-- Case 2: Volume -->
+    <article class="case">
+      <span class="tag">One UI 3.0 · System UI</span>
+      <h2>Volume Control Redesign</h2>
+      <p class="sub">Rethinking one of the most frequently used system controls on every Galaxy device.</p>
+      <div class="impact">
+        <span><strong>Ship</strong> One UI 3.0</span>
+        <span><strong>Pattern</strong> Still the baseline today</span>
+        <span><strong>Scale</strong> Hundreds of millions of devices</span>
+      </div>
+      <div class="case-grid">
+        <div>
+          <h3>Challenge</h3>
+          <p>
+            The One UI 2.x volume panel expanded into a large control block that covered
+            content and forced users to shift attention away from what they were doing.
+            A control invoked dozens of times a day needed to feel instant,
+            glanceable, and physically connected to the hardware keys.
+          </p>
+        </div>
+        <div>
+          <h3>Approach</h3>
+          <ul>
+            <li>Redesigned the panel as a slim, vertical slider aligned to the volume keys — matching the user's hand position</li>
+            <li>Progressive disclosure: single slider by default, expanding to full per-channel controls (media, ring, notification, system) only on demand</li>
+            <li>Reduced occlusion of underlying content while keeping touch targets accessible</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outcome">
+        <strong>Outcome:</strong> Shipped in One UI 3.0 across the Galaxy lineup — hundreds of
+        millions of devices. The vertical, key-aligned volume interaction became the standard
+        pattern in every One UI generation since.
+      </div>
+
+      <!-- Interaction diagram (public era screenshots of this exact panel are scarce / rights-unclear) -->
+      <div class="vol-compare" aria-label="Before and after volume panel interaction diagram">
+        <div class="vol-card">
+          <div class="label">Before <em>One UI 2.x</em></div>
+          <div class="phone-mock" aria-hidden="true">
+            <div class="content-lines">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <div class="vol-old">
+              <div class="row"><div class="ico"></div><div class="bar"></div></div>
+              <div class="row"><div class="ico"></div><div class="bar"></div></div>
+              <div class="row"><div class="ico"></div><div class="bar"></div></div>
+              <div class="row"><div class="ico"></div><div class="bar"></div></div>
+            </div>
+          </div>
+          <p class="vol-note">Large multi-channel block occludes content every time volume is adjusted.</p>
+        </div>
+        <div class="vol-card">
+          <div class="label">After <em>One UI 3.0</em></div>
+          <div class="phone-mock" aria-hidden="true">
+            <div class="content-lines">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <div class="vol-new">
+              <div class="ico"></div>
+              <div class="track"></div>
+              <div class="keys"></div>
+            </div>
+          </div>
+          <p class="vol-note">Slim vertical slider aligned to hardware keys; expand only when needed.</p>
+        </div>
+      </div>
+      <p class="vol-note" style="text-align:left;margin-top:16px;max-width:70ch">
+        Diagram reconstructed from the shipped interaction model. Replace with your own device
+        screenshots or internal press assets when available for higher fidelity.
+      </p>
+    </article>
+
+    <!-- Case 3: Share -->
+    <article class="case">
+      <span class="tag">One UI 3.1 · App Common UI</span>
+      <h2>Share Menu Redesign</h2>
+      <p class="sub">A single, consistent sharing surface across Samsung's entire app ecosystem.</p>
+      <div class="impact">
+        <span><strong>Ship</strong> One UI 3.1</span>
+        <span><strong>Press</strong> Samsung official release</span>
+        <span><strong>Scope</strong> First-party app ecosystem</span>
+      </div>
+      <div class="case-grid">
+        <div>
+          <h3>Challenge</h3>
+          <p>
+            Sharing is one of the highest-traffic flows on the platform, but the share sheet
+            had grown inconsistent across apps — different layouts, different target ordering,
+            and a confusing mix of direct-share targets, apps, and device-to-device sharing.
+          </p>
+        </div>
+        <div>
+          <h3>Approach</h3>
+          <ul>
+            <li>Defined a common share sheet spec adopted across Samsung first-party apps</li>
+            <li>Restructured hierarchy: people first, then nearby devices (Quick Share), then apps</li>
+            <li>Designed the Quick Share / Nearby Share surface for device-to-device transfer as a first-class citizen of the sheet</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outcome">
+        <strong>Outcome:</strong> Shipped in One UI 3.1 and highlighted in Samsung's official
+        press release. The unified sheet became the baseline sharing pattern for first-party apps
+        across the ecosystem.
+      </div>
+      <div class="media-row">
+        <figure>
+          <div class="img-frame">
+            <img src="assets/share-sheet-oneui31.jpg" alt="One UI 3.1 share menu from Samsung press release" width="2000" height="1000" loading="lazy">
+          </div>
+          <figcaption>
+            One UI 3.1 share sheet — Samsung press release
+            <span class="src">Source: <a href="https://news.samsung.com/" target="_blank" rel="noopener">Samsung Newsroom</a> (One UI 3.1 press assets)</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <div class="img-frame">
+            <img class="phone" src="assets/nearby-share.png" alt="Nearby Share / device-to-device sharing on Galaxy" width="290" height="628" loading="lazy">
+          </div>
+          <figcaption>
+            Device-to-device sharing as a first-class share target
+            <span class="src">Source: <a href="https://www.samsung.com/" target="_blank" rel="noopener">Samsung Support</a> (Nearby Share)</span>
+          </figcaption>
+        </figure>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section id="career">
+  <div class="wrap">
+    <div class="section-title">Career</div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="years">2026 – Present</div>
+        <h3>Cross Device Experience Designer · Samsung Electronics</h3>
+        <p>Designing continuity between PC, tablet, and phone — seamless handoff and multi-device workflows across the Galaxy ecosystem.</p>
+      </div>
+      <div class="t-item">
+        <div class="years">2023 – 2025</div>
+        <h3>System UI Designer · Samsung Electronics</h3>
+        <p>Owned core system surfaces: Status Bar, Biometrics, Game Booster, Modes &amp; Routines, and Flex Mode across the Galaxy lineup.</p>
+      </div>
+      <div class="t-item">
+        <div class="years">2020 – 2022</div>
+        <h3>App Common UI Designer · Samsung Electronics</h3>
+        <p>Shared UI patterns across the app ecosystem — Onboarding, Share, Large Screen, and Compatibility — as Samsung expanded into foldables.</p>
+      </div>
+      <div class="t-item">
+        <div class="years">2017 – 2019</div>
+        <h3>Settings App UI Designer · Samsung Electronics</h3>
+        <p>Designed the Settings app UI for the Galaxy series — one of the most-used surfaces on every device shipped.</p>
+      </div>
+      <div class="t-item">
+        <div class="years">2015 – 2016</div>
+        <h3>UX Creative Technologist · Samsung Electronics</h3>
+        <p>Explored new concepts that improve the mobile experience — building working prototypes so people could feel an idea hands-on rather than read about it, and filing UX patents along the way.</p>
+      </div>
+      <div class="t-item">
+        <div class="years">2013 – 2014</div>
+        <h3>System Software Engineer · Samsung Electronics</h3>
+        <p>Two years developing system device drivers before moving into UX — the engineering foundation behind how I design with platform constraints, and why developers trust the specs I write.</p>
+      </div>
+      <div class="t-item">
+        <div class="years">Education</div>
+        <h3>Iowa State University</h3>
+        <p>B.S. in Computer Science.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="patents">
+  <div class="wrap">
+    <div class="section-title">Patents</div>
+    <div class="patent-grid">
+      <article class="patent">
+        <span class="pat-no">US 10,114,418 B2</span>
+        <h3>Adaptive UI for Foldable Displays</h3>
+        <div class="pat-meta">Electronic device and operation method thereof · Granted 2018 · Samsung Electronics</div>
+        <p>
+          A foldable device whose interface reshapes itself with the hardware: folded, it shows
+          a compact icon grid; unfolded, the layout expands and surfaces live widgets in the
+          newly gained space — quick actions without launching full apps. Filed years before
+          foldables shipped, anticipating the interaction model the Galaxy Fold would need.
+        </p>
+        <div class="pat-fig">
+          <img src="assets/patent-foldable-fig.png" alt="USPTO figure from US10114418 — adaptive foldable UI" loading="lazy">
+        </div>
+        <a class="pat-link" href="https://patents.google.com/patent/US10114418B2/en" target="_blank" rel="noopener">View on Google Patents →</a>
+      </article>
+      <article class="patent">
+        <span class="pat-no">US 10,990,196 B2</span>
+        <h3>Environment-Aware Screen Output</h3>
+        <div class="pat-meta">Screen output method and electronic device supporting same · Granted 2021 · Samsung Electronics</div>
+        <p>
+          A device that uses its camera and sensors to read the colors and patterns of its
+          surroundings, then generates display content — home screen, lock screen,
+          notifications — that blends with the environment. Ambient, emotionally engaging
+          UI that treats the device as part of the space it lives in.
+        </p>
+        <div class="pat-fig">
+          <img src="assets/patent-ambient-fig.png" alt="USPTO figure from US10990196 — environment-aware screen output" loading="lazy">
+        </div>
+        <a class="pat-link" href="https://patents.google.com/patent/US10990196B2/en" target="_blank" rel="noopener">View on Google Patents →</a>
+      </article>
+    </div>
+    <p class="pat-note">Currently working on additional patent applications in cross-device experience and AI interaction.</p>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-title">Personal Projects</div>
+    <p class="section-lede">
+      "AI-assisted design" is easy to claim. This is what it actually looks like for me:
+      working agents and prototypes I design and build end-to-end — hands on the same
+      hardware I design for at work.
+    </p>
+    <div class="lab-grid">
+      <article class="lab-card">
+        <span class="lab-tag">Ambient AI · Android Tablet</span>
+        <h3>Memento</h3>
+        <div class="lab-meta">A quiet cheat sheet for parents facing a child's "why?" · Kotlin / Compose</div>
+        <p>
+          A standby tablet app for the living room: it listens to parent–child conversation,
+          detects the hard "why?" questions a 6-year-old asks, and slides in a glanceable card
+          only the parent reads — a one-line answer, a kid-level script, and a follow-up
+          question tip. The AI never talks to the child; it makes the parent the one who knows.
+        </p>
+        <span class="lab-stat">Product spec v0.1 · voice pipeline &amp; MVP in design</span>
+      </article>
+      <article class="lab-card">
+        <span class="lab-tag">On-Device AI · Android</span>
+        <h3>Hermes Mobile</h3>
+        <div class="lab-meta">Autonomous LLM agent running fully on-device · Kotlin / Compose</div>
+        <p>
+          A native Android port of the Hermes agent architecture, running Gemma entirely
+          on a Galaxy Z Fold7 — no cloud, no API keys. The agent observes a week of real
+          sensor data and proposes personalized automation skills the user never asked for:
+          surfacing the patterns you live too close to to notice.
+        </p>
+        <span class="lab-stat">32.1 tok/s on-device · Snapdragon 8 Elite, GPU backend · benchmark validated</span>
+      </article>
+      <article class="lab-card">
+        <span class="lab-tag">AI Orchestration · Automation</span>
+        <h3>loop-engineering</h3>
+        <div class="lab-meta">Overnight autonomous coding pipeline · Python + Claude Code</div>
+        <p>
+          Drop an idea in the queue before bed; by morning there's a working prototype.
+          A deterministic orchestrator drives plan → scaffold → build ⇄ verify (Playwright)
+          → independent evaluation → single-file HTML report, with a local dashboard to
+          submit ideas and watch runs. Design-system-enforced templates keep every
+          overnight build on brand.
+        </p>
+        <span class="lab-stat">Running nightly via launchd · plan→build→eval→report, unattended</span>
+        <a class="pat-link" href="https://github.com/jungwoos/loop-engineering" target="_blank" rel="noopener">View on GitHub →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Let's talk.</h2>
+    <p>
+      I'm interested in roles at the intersection of design and engineering —
+      system UX, cross-device experiences, and AI product &amp; tooling design.
+    </p>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/jung-woo-shin-9a2b5735/">LinkedIn</a>
+      <a href="https://github.com/jungwoos">GitHub</a>
+      <a href="https://patents.google.com/?inventor=Jung-Woo+Shin&amp;assignee=Samsung">Patents</a>
+    </div>
+    <p class="credit">
+      Product screenshots are used for portfolio documentation of shipped work.
+      Game Booster images © SammyGuru (public review coverage);
+      Share sheet © Samsung Newsroom / Support.
+      Patent figures © USPTO via Google Patents.
+      Replace volume diagram with personal device captures when available.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
