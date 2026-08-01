@@ -334,6 +334,21 @@
   .media-row img.phone {
     max-height: 360px; width: auto; max-width: 100%;
   }
+  /* Sub-heading introducing a comparison row; inherits .case h3's small caps look */
+  .case h3.media-lead { margin: 32px 0 0; }
+  .case h3.media-lead + .media-row { margin-top: 12px; }
+  /* .case p sets size and colour at (0,1,1), so match it to win */
+  .case p.media-note { font-size: 12px; color: var(--text-dim); margin-top: 12px; }
+  /* Before/after pairs must stay side by side to be comparable — auto-fit would
+     reflow them into 3 columns in the wide featured card and split the pairing */
+  .media-row.pair { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 700px) { .media-row.pair { grid-template-columns: 1fr; } }
+  .media-row figcaption .ba {
+    display: block; font-weight: 700; color: var(--text);
+    text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px;
+    margin-bottom: 3px;
+  }
+  .media-row figcaption .ba.is-after { color: var(--accent); }
   /* Near-square before/after pairs: the 280px cap crushes them, so give them room */
   .media-row.stack { grid-template-columns: 1fr; }
   .media-row img.compare {
@@ -597,35 +612,84 @@
           — <cite><a href="https://sammyguru.com/game-booster-one-ui-8-5-all-changes/" target="_blank" rel="noopener">SammyGuru, on the Game Booster overhaul</a></cite>
         </blockquote>
       </div>
+      <h3 class="media-lead">The panel</h3>
+      <div class="media-row pair">
+        <figure>
+          <div class="img-frame">
+            <img src="assets/game-booster-panel-before.jpg" alt="Game Booster panel before the redesign: two rows of identical circular toggle icons under Tools and Pop-up apps tabs, with game optimisation and RAM readouts squeezed into a bottom strip" width="2048" height="945" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="ba">Before</span>
+            One flat grid of same-weight icons. Performance state is a line of text at the bottom; changing a mode meant leaving the panel.
+          </figcaption>
+        </figure>
+        <figure>
+          <div class="img-frame">
+            <img src="assets/game-booster-panel-after.webp" alt="Game Booster panel after the redesign: a live CPU, FPS, RAM and GPU readout across the top, three colour-coded performance modes below it, then labelled controls in two columns" width="1080" height="498" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="ba is-after">After · One UI 8.5</span>
+            Live FPS / CPU / GPU / RAM sits at the top, the three performance modes directly under it, and controls become labelled targets — all without leaving gameplay.
+          </figcaption>
+        </figure>
+      </div>
+
+      <h3 class="media-lead">Touch protection</h3>
+      <div class="media-row pair">
+        <figure>
+          <div class="img-frame">
+            <img src="assets/game-booster-touch-before.png" alt="Touch protection before the redesign: a grey band across the middle of the screen carrying a small lock icon, an error message and a battery readout" width="512" height="280" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="ba">Before</span>
+            A grey band cut across the middle of the game, competing with it for attention while saying very little.
+          </figcaption>
+        </figure>
+        <figure>
+          <div class="img-frame">
+            <img src="assets/game-booster-touch-after.webp" alt="Touch protection after the redesign: the game dims evenly behind a centred lock control, with clock, battery, brightness and lock duration placed at the edges" width="1080" height="503" loading="lazy">
+          </div>
+          <figcaption>
+            <span class="ba is-after">After · One UI 8.5</span>
+            The game dims evenly behind one centred unlock target; clock, battery, brightness and duration move to the edges where they stay readable but out of the way.
+          </figcaption>
+        </figure>
+      </div>
+
+      <h3 class="media-lead">Three modes, colour-coded</h3>
       <div class="media-row">
         <figure>
           <div class="img-frame">
-            <img src="assets/game-booster-1.jpg" alt="Game Booster panel on One UI 8.5 showing live performance stats and controls" width="1170" height="540" loading="lazy">
+            <img src="assets/game-booster-4.jpg" alt="Game Booster with the Performance mode selected, rendering the panel in purple" width="2340" height="1080" loading="lazy">
           </div>
           <figcaption>
-            Redesigned in-game panel with live performance stats
+            Performance — purple
             <span class="src">Source: <a href="https://sammyguru.com/game-booster-one-ui-8-5-all-changes/" target="_blank" rel="noopener">SammyGuru</a> (public review)</span>
           </figcaption>
         </figure>
         <figure>
           <div class="img-frame">
-            <img src="assets/game-booster-2.jpg" alt="Game Booster performance modes and settings UI" width="1170" height="540" loading="lazy">
+            <img src="assets/game-booster-3.jpg" alt="Game Booster with the Balanced mode selected, rendering the panel in blue" width="2340" height="1080" loading="lazy">
           </div>
           <figcaption>
-            Performance modes &amp; in-panel settings
+            Balanced — blue
             <span class="src">Source: <a href="https://sammyguru.com/game-booster-one-ui-8-5-all-changes/" target="_blank" rel="noopener">SammyGuru</a></span>
           </figcaption>
         </figure>
         <figure>
           <div class="img-frame">
-            <img src="assets/game-booster-3.jpg" alt="Game Booster notification and interference controls" width="1170" height="540" loading="lazy">
+            <img src="assets/game-booster-2.jpg" alt="Game Booster with the Battery saver mode selected, rendering the panel in green" width="2340" height="1080" loading="lazy">
           </div>
           <figcaption>
-            Notification styles &amp; anti-interference controls
+            Battery saver — green
             <span class="src">Source: <a href="https://sammyguru.com/game-booster-one-ui-8-5-all-changes/" target="_blank" rel="noopener">SammyGuru</a></span>
           </figcaption>
         </figure>
       </div>
+      <p class="media-note">
+        The mode captures are from public review coverage, so the panel is in Turkish —
+        the colour shift is the point.
+      </p>
     </article>
 
     <!-- Secondary cases -->
@@ -887,7 +951,7 @@
     </div>
     <p class="credit">
       Product screenshots are used for portfolio documentation of shipped work.
-      Game Booster images © SammyGuru (public review coverage);
+      Game Booster performance-mode captures © SammyGuru (public review coverage);
       Share sheet © Samsung Newsroom / Support.
       Patent figures © USPTO via Google Patents.
       Volume comparison © Rohit9r via the Samsung Members community.
