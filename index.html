@@ -342,8 +342,6 @@
   /* Sub-heading introducing a comparison row; inherits .case h3's small caps look */
   .case h3.media-lead { margin: 32px 0 0; }
   .case h3.media-lead + .media-row { margin-top: 12px; }
-  /* .case p sets size and colour at (0,1,1), so match it to win */
-  .case p.media-note { font-size: 12px; color: var(--text-dim); margin-top: 12px; }
   /* Before/after pairs must stay side by side to be comparable — auto-fit would
      reflow them into 3 columns in the wide featured card and split the pairing */
   .media-row.pair { grid-template-columns: 1fr 1fr; }
@@ -643,11 +641,11 @@
       <div class="media-row pair">
         <figure>
           <div class="img-frame">
-            <img src="assets/game-booster-touch-before.png" alt="Touch protection before the redesign: a grey band across the middle of the screen carrying a small lock icon, an error message and a battery readout" width="506" height="236" loading="lazy">
+            <img src="assets/game-booster-touch-before.webp" alt="Touch protection before the redesign: the clock, date, battery, unlock prompt, brightness level and lock duration are all stacked down the centre of the dimmed screen" width="1080" height="498" loading="lazy">
           </div>
           <figcaption>
             <span class="ba">Before</span>
-            A grey band cut across the middle of the game, competing with it for attention while saying very little.
+            Clock, battery, brightness and lock duration all stacked down the centre — crowding the one target that matters and covering the part of the game players were watching.
           </figcaption>
         </figure>
         <figure>
@@ -656,45 +654,11 @@
           </div>
           <figcaption>
             <span class="ba is-after">After · One UI 8.5</span>
-            The game dims evenly behind one centred unlock target; clock, battery, brightness and duration move to the edges where they stay readable but out of the way.
+            Only the unlock target keeps the centre. Clock and date move to the top-left, battery to a pill on the right, brightness and duration to the right edge — still readable, clear of the action.
           </figcaption>
         </figure>
       </div>
 
-      <h3 class="media-lead">Three modes, colour-coded</h3>
-      <div class="media-row">
-        <figure>
-          <div class="img-frame">
-            <img src="assets/game-booster-4.jpg" alt="Game Booster with the Performance mode selected, rendering the panel in purple" width="2340" height="1080" loading="lazy">
-          </div>
-          <figcaption>
-            Performance — purple
-            <span class="src">Source: <a href="https://sammyguru.com/game-booster-one-ui-8-5-all-changes/" target="_blank" rel="noopener">SammyGuru</a> (public review)</span>
-          </figcaption>
-        </figure>
-        <figure>
-          <div class="img-frame">
-            <img src="assets/game-booster-3.jpg" alt="Game Booster with the Balanced mode selected, rendering the panel in blue" width="2340" height="1080" loading="lazy">
-          </div>
-          <figcaption>
-            Balanced — blue
-            <span class="src">Source: <a href="https://sammyguru.com/game-booster-one-ui-8-5-all-changes/" target="_blank" rel="noopener">SammyGuru</a></span>
-          </figcaption>
-        </figure>
-        <figure>
-          <div class="img-frame">
-            <img src="assets/game-booster-2.jpg" alt="Game Booster with the Battery saver mode selected, rendering the panel in green" width="2340" height="1080" loading="lazy">
-          </div>
-          <figcaption>
-            Battery saver — green
-            <span class="src">Source: <a href="https://sammyguru.com/game-booster-one-ui-8-5-all-changes/" target="_blank" rel="noopener">SammyGuru</a></span>
-          </figcaption>
-        </figure>
-      </div>
-      <p class="media-note">
-        The mode captures are from public review coverage, so the panel is in Turkish —
-        the colour shift is the point.
-      </p>
     </article>
 
     <!-- Secondary cases -->
@@ -956,7 +920,6 @@
     </div>
     <p class="credit">
       Product screenshots are used for portfolio documentation of shipped work.
-      Game Booster performance-mode captures © SammyGuru (public review coverage);
       Share sheet © Samsung Newsroom / Support.
       Patent figures © USPTO via Google Patents.
       Volume comparison © Rohit9r via the Samsung Members community.
