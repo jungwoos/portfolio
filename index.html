@@ -837,16 +837,20 @@
         <span class="lab-stat">Product spec v0.1 · voice pipeline &amp; MVP in design</span>
       </article>
       <article class="lab-card reveal">
-        <span class="lab-tag">On-Device AI · Android</span>
-        <h3>Hermes Mobile</h3>
-        <div class="lab-meta">Autonomous LLM agent running fully on-device · Kotlin / Compose</div>
+        <span class="lab-tag">Design System · Flutter</span>
+        <h3>Hermes Android — Plasma UI</h3>
+        <div class="lab-meta">A design fork of the Hermes Agent client · Flutter / Dart</div>
+        <div class="lab-thumb">
+          <img src="assets/hermes-android-plasma-ui.webp" alt="Three screens of the Plasma UI theme: a new chat session with the glowing plasma orb and starter prompts, a skills list with cyan dots marking active skills, and a settings screen with model selection and a light or dark appearance switch" width="900" height="623" loading="lazy">
+        </div>
         <p>
-          A native Android port of the Hermes agent architecture, running Gemma entirely
-          on a Galaxy Z Fold7 — no cloud, no API keys. The agent observes a week of real
-          sensor data and proposes personalized automation skills the user never asked for:
-          surfacing the patterns you live too close to to notice.
+          A restyle of <a href="https://github.com/rusty4444/hermes-android" target="_blank" rel="noopener">someone else's client</a>:
+          routes, gateway and streaming untouched, appearance rebuilt. Colour and shape live
+          in one file, so a restyle never sweeps the codebase — and the glass, glow and orb
+          are Flutter primitives, not new dependencies.
         </p>
-        <span class="lab-stat">32.1 tok/s on-device · Snapdragon 8 Elite, GPU backend · benchmark validated</span>
+        <span class="lab-stat">7 tokens · 5 shared widgets · 0 new deps · light and dark both first-class</span>
+        <a class="pat-link" href="https://github.com/jungwoos/hermes-android" target="_blank" rel="noopener">View on GitHub →</a>
       </article>
       <article class="lab-card reveal">
         <span class="lab-tag">AI Orchestration · Automation</span>
