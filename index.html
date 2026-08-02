@@ -342,6 +342,10 @@
   /* Sub-heading introducing a comparison row; inherits .case h3's small caps look */
   .case h3.media-lead { margin: 32px 0 0; }
   .case h3.media-lead + .media-row { margin-top: 12px; }
+  .case h3.media-lead + p { margin-top: 8px; }
+  /* Trailing source line under a media group. .case p sets size and colour at
+     (0,1,1), so match that specificity to win. */
+  .case p.media-note { font-size: 12px; color: var(--text-dim); margin-top: 12px; }
   /* Before/after pairs must stay side by side to be comparable — auto-fit would
      reflow them into 3 columns in the wide featured card and split the pairing */
   .media-row.pair { grid-template-columns: 1fr 1fr; }
@@ -746,26 +750,57 @@
           official press release. The unified sheet became the baseline sharing pattern
           for first-party apps across the ecosystem.
         </div>
-        <div class="media-row">
+        <h3 class="media-lead">Two generations on — One UI 5.0 vs stock Android 13</h3>
+        <p>
+          One UI 5.0 runs on Android 13, so a 2023 side-by-side shows which of the 3.1
+          decisions survived contact with Google's own sheet: people ahead of apps,
+          Quick Share promoted, and the sheet leading with what you are actually sending.
+        </p>
+        <div class="media-row pair">
           <figure>
             <div class="img-frame">
-              <img src="assets/share-sheet-oneui31.jpg" alt="One UI 3.1 share menu from Samsung press release" width="2000" height="1000" loading="lazy">
+              <img class="phone" src="assets/android-13-sharesheet-1.jpg" alt="Stock Android 13 share sheet for a link: the URL shown as plain text, Copy and Nearby buttons, an empty recommended-people row, and one row of four app icons" width="591" height="1280" loading="lazy">
             </div>
             <figcaption>
-              One UI 3.1 share sheet — Samsung press release
-              <span class="src">Source: <a href="https://news.samsung.com/" target="_blank" rel="noopener">Samsung Newsroom</a> (One UI 3.1 press assets)</span>
+              <span class="ba">Stock Android 13</span>
+              The link stays raw text. The recommended-people row is there but empty, and four apps sit in a fixed row.
             </figcaption>
           </figure>
           <figure>
             <div class="img-frame">
-              <img class="phone" src="assets/nearby-share.png" alt="Nearby Share / device-to-device sharing on Galaxy" width="290" height="628" loading="lazy">
+              <img class="phone" src="assets/one-ui-5.0-share-sheet-1.webp" alt="One UI 5.0 share sheet for a link: a preview card with thumbnail, title and summary, Copy URL and Nearby Share buttons, a scrolling row of contacts labelled Chats, then apps led by Quick Share" width="591" height="1280" loading="lazy">
             </div>
             <figcaption>
-              Device-to-device sharing as a first-class share target
-              <span class="src">Source: <a href="https://www.samsung.com/" target="_blank" rel="noopener">Samsung Support</a> (Nearby Share)</span>
+              <span class="ba is-after">One UI 5.0</span>
+              The link resolves into a preview card, contacts sit above the apps under a per-destination label, and Quick Share leads the row.
             </figcaption>
           </figure>
         </div>
+        <div class="media-row pair">
+          <figure>
+            <div class="img-frame">
+              <img class="phone" src="assets/android-13-sharesheet-3.jpg" alt="Stock Android 13 share sheet expanded while sharing an image: a full-screen grid of nine app targets with a large empty area beneath it" width="591" height="1280" loading="lazy">
+            </div>
+            <figcaption>
+              <span class="ba">Stock Android 13</span>
+              Expanded, the sheet becomes a full-screen app grid — and most of that screen is empty.
+            </figcaption>
+          </figure>
+          <figure>
+            <div class="img-frame">
+              <img class="phone" src="assets/one-ui-5.0-share-sheet-3.webp" alt="One UI 5.0 share sheet while sharing two images: a header reading 2 items, 747.41 KB and Options, above the contacts and app rows, with the gallery selection still visible behind the sheet" width="591" height="1280" loading="lazy">
+            </div>
+            <figcaption>
+              <span class="ba is-after">One UI 5.0</span>
+              It opens on the payload instead — 2 items, 747 KB, Options — and the picker stays live behind the sheet, so the selection can still change.
+            </figcaption>
+          </figure>
+        </div>
+        <p class="media-note">
+          Both captures come from a third-party comparison:
+          <a href="https://www.sammyfans.com/2023/01/07/android-13-sharesheet-vs-one-ui-5-0-sharesheet/" target="_blank" rel="noopener">Android 13 Sharesheet vs One UI 5.0 Sharesheet</a>,
+          Robin Williams, Sammy Fans, 7 January 2023.
+        </p>
       </article>
 
     </div>
@@ -919,7 +954,7 @@
     </div>
     <p class="credit">
       Product screenshots are used for portfolio documentation of shipped work.
-      Share sheet © Samsung Newsroom / Support.
+      Share sheet comparison © Robin Williams / Sammy Fans.
       Patent figures © USPTO via Google Patents.
       Volume comparison © Rohit9r via the Samsung Members community.
     </p>
