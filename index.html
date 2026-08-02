@@ -424,7 +424,12 @@
   .t-item { position: relative; padding-bottom: 36px; }
   .t-item:last-child { padding-bottom: 0; }
   .t-item::before {
-    content: ""; position: absolute; top: 6px;
+    content: "";
+    position: absolute;
+    /* Centre the dot on the .years line rather than the 6px it used to sit at, which
+       left it 4.6px low. That line is 13px type on the 1.6 body line-height = 20.8px,
+       and the dot measures 18px across its ring, so (20.8 - 18) / 2 lands it level. */
+    top: 1.4px;
     width: 12px; height: 12px; border-radius: 50%;
     background: var(--accent); border: 3px solid var(--bg);
     /* Centre the dot on the rule without depending on its own size. The item's box
