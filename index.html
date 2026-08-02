@@ -430,6 +430,9 @@
   .t-item .years { font-size: 13px; color: var(--accent-warm); font-weight: 600; }
   .t-item h3 { font-size: 18px; margin: 2px 0 4px; letter-spacing: -0.01em; }
   .t-item p { color: var(--text-dim); font-size: 15px; max-width: 62ch; }
+  /* Surfaces owned in a role — reuses .chip from the hero, one size down */
+  .t-apps { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; max-width: 62ch; }
+  .t-apps .chip { font-size: 12px; padding: 4px 11px; }
 
   /* Patents */
   .patent-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -866,16 +869,35 @@
         <div class="years">2026 – Present</div>
         <h3>Cross Device Experience Designer · Samsung Electronics</h3>
         <p>Designing continuity between PC, tablet, and phone — seamless handoff and multi-device workflows across the Galaxy ecosystem.</p>
+        <div class="t-apps">
+          <span class="chip">Nearby Devices</span>
+          <span class="chip">Multi Control</span>
+          <span class="chip">Second Screen</span>
+          <span class="chip">Storage Share</span>
+          <span class="chip">Camera Share</span>
+        </div>
       </div>
       <div class="t-item reveal">
         <div class="years">2023 – 2025</div>
         <h3>System UI Designer · Samsung Electronics</h3>
-        <p>Owned core system surfaces: Status Bar, Biometrics, Game Booster, Modes &amp; Routines, and Flex Mode across the Galaxy lineup.</p>
+        <p>Owned core system surfaces across the Galaxy lineup — the layers people touch constantly without ever opening an app.</p>
+        <div class="t-apps">
+          <span class="chip">Game Booster</span>
+          <span class="chip">Status Bar</span>
+          <span class="chip">Biometrics</span>
+          <span class="chip">Modes &amp; Routines</span>
+        </div>
       </div>
       <div class="t-item reveal">
         <div class="years">2020 – 2022</div>
         <h3>App Common UI Designer · Samsung Electronics</h3>
-        <p>Shared UI patterns across the app ecosystem — Onboarding, Share, Large Screen, and Compatibility — as Samsung expanded into foldables.</p>
+        <p>Shared UI patterns across the app ecosystem, as Samsung expanded into foldables.</p>
+        <div class="t-apps">
+          <span class="chip">Share Menu</span>
+          <span class="chip">Quick Share</span>
+          <span class="chip">App Onboarding &amp; Welcome</span>
+          <span class="chip">Large Screen &amp; Compatibility</span>
+        </div>
       </div>
       <div class="t-item reveal">
         <div class="years">2017 – 2019</div>
