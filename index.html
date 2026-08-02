@@ -545,8 +545,8 @@
         <div class="l">Granted UX patents<br>on foldables &amp; ambient UI</div>
       </div>
       <div class="stat">
-        <div class="n">32<span class="unit">tok/s</span></div>
-        <div class="l">On-device LLM agent<br>designed &amp; built end-to-end</div>
+        <div class="n">3</div>
+        <div class="l">AI projects designed &amp; built<br>end-to-end · code on GitHub</div>
       </div>
     </div>
   </div>
@@ -555,10 +555,6 @@
 <section id="work">
   <div class="wrap">
     <div class="section-title">Selected Work</div>
-    <p class="section-lede">
-      Platform surfaces used daily across the Galaxy lineup — from initiating a redesign
-      nobody planned, to patterns that stuck for generations of One UI.
-    </p>
 
     <!-- Featured case: Game Booster -->
     <article class="case featured reveal">
@@ -579,15 +575,13 @@
             Gaming is where system UI is most intrusive: players need performance control,
             notification management, and capture tools — without leaving the game or
             breaking immersion. The existing panel forced players out of gameplay to change
-            settings, and it had been untouched for years. It wasn't on anyone's roadmap;
-            I proposed the redesign, built the case, and got leadership and the development
-            team committed to it.
+            settings, and it had been untouched for years — while competing gaming phones
+            had already moved past it.
           </p>
         </div>
         <div>
-          <h3>My role &amp; approach</h3>
+          <h3>Approach</h3>
           <ul>
-            <li>UI designer and initiator on a 7-person team — visual designer, animation designer, and developers — coordinating design and engineering against a compressed schedule</li>
             <li>In-context panel: adjust settings, view live stats (FPS / CPU / GPU / RAM), and capture — without exiting gameplay</li>
             <li>Three color-coded performance modes (Performance / Balanced / Battery Saver) with per-game saved configurations</li>
             <li>Anti-interference gesture system preventing accidental status-bar pulls, navigation gestures, and assistant triggers mid-game</li>
@@ -597,18 +591,8 @@
       </div>
 
       <details class="process">
-        <summary>Behind the ship — how it got on the roadmap, and what we traded off</summary>
+        <summary>Behind the ship — what we traded off</summary>
         <div class="process-body">
-          <h4>Making the case</h4>
-          <p>
-            Game Booster had shipped for years without meaningful design investment, while
-            gaming grew into one of the heaviest usage categories on Galaxy hardware. I
-            collected the recurring community complaints — settings buried behind a context
-            switch, gestures interrupting gameplay, notifications built for phones at rest,
-            not phones in landscape — and framed the cost of leaving it untouched against
-            where competing gaming phones had already moved. That argument earned a
-            7-person team and a slot in the One UI 8.5 release.
-          </p>
           <h4>Key decisions &amp; trade-offs</h4>
           <ul>
             <li><strong>In-context overlay over a full-screen hub.</strong> A dedicated hub app is easier to build and demo, but every second outside the game is the failure we were fixing. Everything — settings, live stats, capture — stays inside a panel that never leaves gameplay.</li>
@@ -616,20 +600,12 @@
             <li><strong>Interference handling as a system, not a toggle.</strong> Accidental status-bar pulls, navigation gestures, and assistant triggers each break gameplay differently — so each got its own guard behavior instead of one blunt "block everything" switch.</li>
             <li><strong>Notifications as a style matrix.</strong> Rather than one gaming notification style, we shipped four (System / Pop-up / Bubble / Dash pill) with transparency, animation, and sound tunable — because tolerance for interruption differs by game genre, not by user.</li>
           </ul>
-          <h4>Working with engineering</h4>
-          <p>
-            Two years writing system device drivers before design means I spec against
-            platform constraints from the start — live FPS / CPU / GPU / RAM stats and
-            gesture interception both live close to the framework, and knowing what's cheap
-            versus what's invasive kept the compressed schedule honest. The spec engineers
-            got was the spec that shipped.
-          </p>
         </div>
       </details>
 
       <div class="outcome">
-        <strong>Outcome:</strong> Shipped in One UI 8.5 across the Galaxy lineup. Community
-        response to the redesign has been strongly positive:
+        <strong>Outcome:</strong> Shipped in One UI 8.5 across the Galaxy lineup, and picked
+        up in a full write-up of the redesign:
         <blockquote>
           "One UI 8.5 is shaping up to be one of Samsung's most meaningful updates in years."
           — <cite><a href="https://sammyguru.com/game-booster-one-ui-8-5-all-changes/" target="_blank" rel="noopener">SammyGuru, on the Game Booster overhaul</a></cite>
@@ -743,7 +719,6 @@
         <p class="sub">A single, consistent sharing surface across Samsung's entire app ecosystem.</p>
         <div class="impact">
           <span><strong>Ship</strong> One UI 3.1</span>
-          <span><strong>Press</strong> Samsung official release</span>
         </div>
         <div class="case-grid">
           <div>
@@ -762,9 +737,8 @@
           </div>
         </div>
         <div class="outcome">
-          <strong>Outcome:</strong> Shipped in One UI 3.1 and highlighted in Samsung's
-          official press release. The unified sheet became the baseline sharing pattern
-          for first-party apps across the ecosystem.
+          <strong>Outcome:</strong> Shipped in One UI 3.1, and the unified sheet became the
+          baseline sharing pattern for first-party apps across the ecosystem.
         </div>
         <h3 class="media-lead">Two generations on — One UI 5.0 vs stock Android 13</h3>
         <p>
@@ -788,7 +762,6 @@
             </div>
             <figcaption>
               <span class="ba is-after">One UI 5.0</span>
-              The link resolves into a preview card, contacts sit above the apps under a per-destination label, and Quick Share leads the row.
             </figcaption>
           </figure>
         </div>
