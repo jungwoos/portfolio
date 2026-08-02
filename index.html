@@ -411,6 +411,11 @@
   }
   .lab-card h3 { font-size: 19px; letter-spacing: -0.01em; margin: 10px 0 4px; }
   .lab-card .lab-meta { font-size: 13px; color: var(--text-dim); margin-bottom: 14px; }
+  .lab-card .lab-thumb {
+    margin-bottom: 14px; border: 1px solid var(--border);
+    border-radius: 10px; overflow: hidden; background: var(--frame-bg);
+  }
+  .lab-card .lab-thumb img { width: 100%; height: auto; display: block; }
   .lab-card p { font-size: 15px; color: var(--text); flex: 1; }
   .lab-card .lab-stat {
     margin-top: 16px; font-family: ui-monospace, "SF Mono", Menlo, monospace;
@@ -847,12 +852,13 @@
         <span class="lab-tag">AI Orchestration · Automation</span>
         <h3>loop-engineering</h3>
         <div class="lab-meta">Overnight autonomous coding pipeline · Python + Claude Code</div>
+        <div class="lab-thumb">
+          <img src="assets/loop-engineering-dashboard.webp" alt="The loop-engineering dashboard: an idea queue and run history on the left, and a pipeline graph running plan, scaffold, build, verify, evaluate and report with per-stage status" width="800" height="464" loading="lazy">
+        </div>
         <p>
-          Drop an idea in the queue before bed; by morning there's a working prototype.
-          A deterministic orchestrator drives plan → scaffold → build ⇄ verify (Playwright)
-          → independent evaluation → single-file HTML report, with a local dashboard to
-          submit ideas and watch runs. Design-system-enforced templates keep every
-          overnight build on brand.
+          Drop an idea in the queue before bed; by morning there's a working prototype —
+          planned, built, verified with Playwright, then graded by an independent
+          evaluator. Design-system templates keep every overnight build on brand.
         </p>
         <span class="lab-stat">Running nightly via launchd · plan→build→eval→report, unattended</span>
         <a class="pat-link" href="https://github.com/jungwoos/loop-engineering" target="_blank" rel="noopener">View on GitHub →</a>
@@ -1080,7 +1086,7 @@ document.documentElement.classList.add('js');
     lb.hidden = true;
     document.body.style.overflow = '';
   }
-  document.querySelectorAll('.media-row img, .pat-fig img').forEach(function (img) {
+  document.querySelectorAll('.media-row img, .pat-fig img, .lab-thumb img').forEach(function (img) {
     img.classList.add('zoomable');
     img.addEventListener('click', function () {
       lbImg.src = img.src;
