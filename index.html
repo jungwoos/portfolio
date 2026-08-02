@@ -428,9 +428,16 @@
   .t-item { position: relative; padding-bottom: 36px; }
   .t-item:last-child { padding-bottom: 0; }
   .t-item::before {
-    content: ""; position: absolute; left: -39px; top: 6px;
+    content: ""; position: absolute; top: 6px;
     width: 12px; height: 12px; border-radius: 50%;
     background: var(--accent); border: 3px solid var(--bg);
+    /* Centre the dot on the rule without depending on its own size. The item's box
+       starts padding-left (32px) + border-left (2px) in from .timeline, so -33px puts
+       the dot's left edge on the rule's centre line; translateX pulls it back by half
+       its own width. Needed because `*` does not match pseudo-elements, so this one
+       is still content-box and measures 18px across, not 12px. */
+    left: -33px;
+    transform: translateX(-50%);
   }
   .t-item .years { font-size: 13px; color: var(--accent-warm); font-weight: 600; }
   .t-item h3 { font-size: 18px; margin: 2px 0 4px; letter-spacing: -0.01em; }
@@ -894,6 +901,7 @@
           <span class="chip">Status Bar</span>
           <span class="chip">Biometrics</span>
           <span class="chip">Modes &amp; Routines</span>
+          <span class="chip">Daily Board</span>
         </div>
       </div>
       <div class="t-item reveal">
