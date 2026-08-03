@@ -336,9 +336,6 @@
     height: auto;
     object-fit: contain; display: block;
   }
-  .media-row img.phone {
-    max-height: 360px; width: auto; max-width: 100%;
-  }
   /* Sub-heading introducing a comparison row; inherits .case h3's small caps look */
   .case h3.media-lead { margin: 32px 0 0; }
   .case h3.media-lead + .media-row { margin-top: 12px; }
@@ -346,17 +343,7 @@
   /* Trailing source line under a media group. .case p sets size and colour at
      (0,1,1), so match that specificity to win. */
   .case p.media-note { font-size: 12px; color: var(--text-dim); margin-top: 12px; }
-  /* Before/after pairs must stay side by side to be comparable — auto-fit would
-     reflow them into 3 columns in the wide featured card and split the pairing */
-  .media-row.pair { grid-template-columns: 1fr 1fr; }
-  @media (max-width: 700px) { .media-row.pair { grid-template-columns: 1fr; } }
-  .media-row figcaption .ba {
-    display: block; font-weight: 700; color: var(--text);
-    text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px;
-    margin-bottom: 3px;
-  }
-  .media-row figcaption .ba.is-after { color: var(--accent); }
-  /* Near-square before/after pairs: the 280px cap crushes them, so give them room */
+  /* Comparison composites carry both states in one image, so one per row */
   .media-row.stack { grid-template-columns: 1fr; }
   .media-row img.compare {
     max-height: 460px; width: auto; max-width: 100%;
@@ -730,42 +717,25 @@
           decisions survived contact with Google's own sheet: people ahead of apps,
           Quick Share promoted, and the sheet leading with what you are actually sending.
         </p>
-        <div class="media-row pair">
+        <div class="media-row stack">
           <figure>
             <div class="img-frame">
-              <img class="phone" src="assets/android-13-sharesheet-1.jpg" alt="Stock Android 13 share sheet for a link: the URL shown as plain text, Copy and Nearby buttons, an empty recommended-people row, and one row of four app icons" width="591" height="1280" loading="lazy">
+              <img class="compare" src="assets/sharesheet-internet-before-after.webp" alt="Sharing a link, stock Android 13 on the left and One UI 5.0 on the right: Android shows the URL as plain text with an empty recommended-people row above four fixed app icons; One UI resolves the link into a preview card, then a scrolling row of contacts, then apps led by Quick Share" width="1070" height="1128" loading="lazy">
             </div>
             <figcaption>
-              <span class="ba">Stock Android 13</span>
-              The link stays raw text. The recommended-people row is there but empty, and four apps sit in a fixed row.
+              Sharing a link — Android 13 (left) keeps the URL as raw text with an empty
+              people row; One UI 5.0 (right) resolves it into a preview card and puts
+              contacts above the apps.
             </figcaption>
           </figure>
           <figure>
             <div class="img-frame">
-              <img class="phone" src="assets/one-ui-5.0-share-sheet-1.webp" alt="One UI 5.0 share sheet for a link: a preview card with thumbnail, title and summary, Copy URL and Nearby Share buttons, a scrolling row of contacts labelled Chats, then apps led by Quick Share" width="591" height="1280" loading="lazy">
+              <img class="compare" src="assets/sharesheet-image-before-after.webp" alt="Sharing images, stock Android 13 on the left and One UI 5.0 on the right: Android expands into a full-screen grid of nine app targets with a large empty area below; One UI leads with a header reading 2 items and 747.41 KB, with the gallery selection still visible behind the sheet" width="1070" height="1128" loading="lazy">
             </div>
             <figcaption>
-              <span class="ba is-after">One UI 5.0</span>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="media-row pair">
-          <figure>
-            <div class="img-frame">
-              <img class="phone" src="assets/android-13-sharesheet-3.jpg" alt="Stock Android 13 share sheet expanded while sharing an image: a full-screen grid of nine app targets with a large empty area beneath it" width="591" height="1280" loading="lazy">
-            </div>
-            <figcaption>
-              <span class="ba">Stock Android 13</span>
-              Expanded, the sheet becomes a full-screen app grid — and most of that screen is empty.
-            </figcaption>
-          </figure>
-          <figure>
-            <div class="img-frame">
-              <img class="phone" src="assets/one-ui-5.0-share-sheet-3.webp" alt="One UI 5.0 share sheet while sharing two images: a header reading 2 items, 747.41 KB and Options, above the contacts and app rows, with the gallery selection still visible behind the sheet" width="591" height="1280" loading="lazy">
-            </div>
-            <figcaption>
-              <span class="ba is-after">One UI 5.0</span>
-              It opens on the payload instead — 2 items, 747 KB, Options — and the picker stays live behind the sheet, so the selection can still change.
+              Sharing images — Android 13 (left) fills the screen with an app grid and leaves
+              most of it empty; One UI 5.0 (right) opens on the payload, with the picker
+              still live behind the sheet.
             </figcaption>
           </figure>
         </div>
