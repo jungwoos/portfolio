@@ -361,9 +361,6 @@
   .media-row img.compare {
     max-height: 460px; width: auto; max-width: 100%;
   }
-  /* Captures already composited on white — keep the frame continuous with the image
-     instead of ringing it with the default dark plate. Wins in both colour schemes. */
-  .media-row .img-frame.on-white { background: #fff; }
   .media-row figcaption {
     font-size: 12px; color: var(--text-dim); padding: 10px 14px;
     border-top: 1px solid var(--border);
@@ -571,11 +568,11 @@
         <div>
           <h3>Challenge</h3>
           <p>
-            Gaming is where system UI is most intrusive: players need performance control,
-            notification management, and capture tools — without leaving the game or
-            breaking immersion. The existing panel forced players out of gameplay to change
-            settings, and it had been untouched for years — while competing gaming phones
-            had already moved past it.
+            Game Booster is the system layer that tunes a phone to a game in progress —
+            display, computing, notifications, capture. Around half of phone owners play
+            mobile games, so it ships on every Galaxy, but it had grown into a bag of
+            separate toggles rather than a place to control anything, and had gone years
+            without design investment while competing gaming phones moved past it.
           </p>
         </div>
         <div>
@@ -588,6 +585,17 @@
           </ul>
         </div>
       </div>
+
+      <h3 class="media-lead">What players asked for</h3>
+      <p>
+        We recruited gamers inside the company and designed against what they told us.
+      </p>
+      <ul>
+        <li><strong>Make it a dashboard, not tabs.</strong> The panel should be somewhere to read the state of the phone, not a list to page through.</li>
+        <li><strong>Let me change performance mode here.</strong> Engineering pushed back on what it would cost to expose mode switching in the overlay. We worked it out together instead of dropping the request.</li>
+        <li><strong>Show me system load.</strong> Delivered as a minimal monitor — players wanted to glance at load, not read a diagnostics panel.</li>
+        <li><strong>I can't read the buttons.</strong> Legibility reworked for a phone held in landscape, mid-game, at arm's length.</li>
+      </ul>
 
       <details class="process">
         <summary>Behind the ship — what we traded off</summary>
@@ -611,45 +619,29 @@
         </blockquote>
       </div>
       <h3 class="media-lead">The panel</h3>
-      <div class="media-row pair">
+      <div class="media-row stack">
         <figure>
           <div class="img-frame">
-            <img src="assets/game-booster-panel-before.jpg" alt="Game Booster panel before the redesign: two rows of identical circular toggle icons under Tools and Pop-up apps tabs, with game optimisation and RAM readouts squeezed into a bottom strip" width="2048" height="945" loading="lazy">
+            <img class="compare" src="assets/game-booster-panel-before-after.webp" alt="Game Booster panel before and after: above, two rows of identical circular toggle icons under Tools and Pop-up apps tabs with game optimisation and RAM squeezed into a bottom strip; below, a live CPU, FPS, RAM and GPU readout across the top, three colour-coded performance modes under it, then labelled controls in two columns" width="1128" height="1069" loading="lazy">
           </div>
           <figcaption>
-            <span class="ba">Before</span>
-            One flat grid of same-weight icons. Performance state is a line of text at the bottom; changing a mode meant leaving the panel.
-          </figcaption>
-        </figure>
-        <figure>
-          <div class="img-frame">
-            <img src="assets/game-booster-panel-after.webp" alt="Game Booster panel after the redesign: a live CPU, FPS, RAM and GPU readout across the top, three colour-coded performance modes below it, then labelled controls in two columns" width="1080" height="498" loading="lazy">
-          </div>
-          <figcaption>
-            <span class="ba is-after">After · One UI 8.5</span>
-            Live FPS / CPU / GPU / RAM sits at the top, the three performance modes directly under it, and controls become labelled targets — all without leaving gameplay.
+            Before (top) is one flat grid of same-weight icons, with performance state
+            demoted to a line of text. After, the readout leads, the three modes sit under
+            it, and mode changes happen here instead of somewhere else.
           </figcaption>
         </figure>
       </div>
 
       <h3 class="media-lead">Touch protection</h3>
-      <div class="media-row pair">
+      <div class="media-row stack">
         <figure>
           <div class="img-frame">
-            <img src="assets/game-booster-touch-before.webp" alt="Touch protection before the redesign: the clock, date, battery, unlock prompt, brightness level and lock duration are all stacked down the centre of the dimmed screen" width="1080" height="498" loading="lazy">
+            <img class="compare" src="assets/game-booster-touch-before-after.webp" alt="Touch protection before and after: above, the clock, battery, unlock prompt, brightness and lock duration are stacked down the centre of the dimmed screen; below, only the unlock target keeps the centre while the clock sits top-left, the battery in a pill top-right, and brightness and duration at the right edge" width="1128" height="1069" loading="lazy">
           </div>
           <figcaption>
-            <span class="ba">Before</span>
-            Clock, battery, brightness and lock duration all stacked down the centre — crowding the one target that matters and covering the part of the game players were watching.
-          </figcaption>
-        </figure>
-        <figure>
-          <div class="img-frame">
-            <img src="assets/game-booster-touch-after.webp" alt="Touch protection after the redesign: the game dims evenly behind a centred lock control, with clock, battery, brightness and lock duration placed at the edges" width="1080" height="503" loading="lazy">
-          </div>
-          <figcaption>
-            <span class="ba is-after">After · One UI 8.5</span>
-            Only the unlock target keeps the centre. Clock and date move to the top-left, battery to a pill on the right, brightness and duration to the right edge — still readable, clear of the action.
+            Before (top) crowds the centre with everything at once. After, only the unlock
+            target holds the middle and the rest moves to the edges — still readable, clear
+            of the action.
           </figcaption>
         </figure>
       </div>
@@ -663,7 +655,7 @@
       <article class="case reveal">
         <span class="tag">One UI 3.0 · System UI</span>
         <h2>Volume Control Redesign</h2>
-        <p class="sub">Rethinking one of the most frequently used system controls on every Galaxy device.</p>
+        <p class="sub">Redesigned once in One UI 3.0, and still the volume pattern on every Galaxy.</p>
         <div class="case-grid">
           <div>
             <h3>Challenge → Approach</h3>
@@ -676,7 +668,6 @@
             <ul>
               <li>Slim vertical slider aligned to the volume keys — matching the user's hand position</li>
               <li>Progressive disclosure: one slider by default, full per-channel controls (media, ring, notification, system) on demand</li>
-              <li>Default state covers far less content; expanded state moves secondary toggles behind a settings affordance, leaving only the channel controls</li>
             </ul>
           </div>
         </div>
@@ -687,24 +678,25 @@
         </div>
         <div class="media-row stack">
           <figure>
-            <div class="img-frame on-white">
-              <img class="compare" src="assets/volume-oneui2-vs-3-default.jpg" alt="Volume panel in its default state: One UI 2.x shows a full-width horizontal slider across the top of the screen, while One UI 3.0 shows a slim vertical slider at the right edge beside the hardware keys" width="1565" height="1664" loading="lazy">
+            <div class="img-frame">
+              <img class="compare" src="assets/volume-bar-before-after.webp" alt="Volume in its default state: One UI 2.x on the left shows a full-width horizontal slider across the top of the screen, One UI 3.0 on the right shows a slim vertical slider at the right edge beside the hardware keys" width="900" height="976" loading="lazy">
             </div>
             <figcaption>
-              Default state — One UI 2.x (left) spans the top edge; One UI 3.0 (right) sits beside the hardware keys
-              <span class="src">Source: <a href="https://r2.community.samsung.com/t5/Galaxy-S/One-UI-2-x-vs-One-UI-3-0/td-p/5781784" target="_blank" rel="noopener">Samsung Members community</a> — “One UI 2.x vs One UI 3.0” by Rohit9r</span>
+              Default state — 2.x (left) spans the top edge; 3.0 (right) sits beside the hardware keys
             </figcaption>
           </figure>
           <figure>
-            <div class="img-frame on-white">
-              <img class="compare" src="assets/volume-oneui2-vs-3-expanded.jpg" alt="Volume panel expanded: One UI 2.x stacks four labelled horizontal sliders above two inline setting toggles, while One UI 3.0 shows four vertical per-channel sliders in a compact panel" width="1626" height="1728" loading="lazy">
+            <div class="img-frame">
+              <img class="compare" src="assets/volume-panel-before-after.webp" alt="Volume expanded: One UI 2.x on the left stacks four labelled horizontal sliders above two unrelated setting toggles, One UI 3.0 on the right shows four vertical per-channel sliders in a compact panel" width="900" height="976" loading="lazy">
             </div>
             <figcaption>
-              Expanded state — per-channel controls on demand; 2.x's inline toggles move behind the gear icon in 3.0
-              <span class="src">Source: <a href="https://r2.community.samsung.com/t5/Galaxy-S/One-UI-2-x-vs-One-UI-3-0/td-p/5781784" target="_blank" rel="noopener">Samsung Members community</a> — “One UI 2.x vs One UI 3.0” by Rohit9r</span>
+              Expanded state — per-channel controls on demand, with 2.x's inline toggles moved behind the gear
             </figcaption>
           </figure>
         </div>
+        <p class="media-note">
+          Captures: <a href="https://r2.community.samsung.com/t5/Galaxy-S/One-UI-2-x-vs-One-UI-3-0/td-p/5781784" target="_blank" rel="noopener">Samsung Members community</a>, “One UI 2.x vs One UI 3.0” by Rohit9r.
+        </p>
       </article>
 
       <!-- Share -->
