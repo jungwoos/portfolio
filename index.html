@@ -343,6 +343,13 @@
   /* Trailing source line under a media group. .case p sets size and colour at
      (0,1,1), so match that specificity to win. */
   .case p.media-note { font-size: 12px; color: var(--text-dim); margin-top: 12px; }
+  /* Two comparison groups side by side in the featured case. Mirrors .case-row's
+     columns, gap and 860px breakpoint so the whole Work section folds at once. */
+  .media-cols {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    align-items: start;
+  }
+  @media (max-width: 860px) { .media-cols { grid-template-columns: 1fr; } }
   /* Comparison composites carry both states in one image, so one per row */
   .media-row.stack { grid-template-columns: 1fr; }
   .media-row img.compare {
@@ -605,32 +612,37 @@
           — <cite><a href="https://sammyguru.com/game-booster-one-ui-8-5-all-changes/" target="_blank" rel="noopener">SammyGuru, on the Game Booster overhaul</a></cite>
         </blockquote>
       </div>
-      <h3 class="media-lead">The panel</h3>
-      <div class="media-row stack">
-        <figure>
-          <div class="img-frame">
-            <img class="compare" src="assets/game-booster-panel-before-after.webp" alt="Game Booster panel before and after: above, two rows of identical circular toggle icons under Tools and Pop-up apps tabs with game optimisation and RAM squeezed into a bottom strip; below, a live CPU, FPS, RAM and GPU readout across the top, three colour-coded performance modes under it, then labelled controls in two columns" width="1128" height="1069" loading="lazy">
+      <div class="media-cols">
+        <div>
+          <h3 class="media-lead">The panel</h3>
+          <div class="media-row stack">
+            <figure>
+              <div class="img-frame">
+                <img class="compare" src="assets/game-booster-panel-before-after.webp" alt="Game Booster panel before and after: above, two rows of identical circular toggle icons under Tools and Pop-up apps tabs with game optimisation and RAM squeezed into a bottom strip; below, a live CPU, FPS, RAM and GPU readout across the top, three colour-coded performance modes under it, then labelled controls in two columns" width="1128" height="1069" loading="lazy">
+              </div>
+              <figcaption>
+                Before (top) is one flat grid of same-weight icons, with performance state
+                demoted to a line of text. After, the readout leads, the three modes sit under
+                it, and mode changes happen here instead of somewhere else.
+              </figcaption>
+            </figure>
           </div>
-          <figcaption>
-            Before (top) is one flat grid of same-weight icons, with performance state
-            demoted to a line of text. After, the readout leads, the three modes sit under
-            it, and mode changes happen here instead of somewhere else.
-          </figcaption>
-        </figure>
-      </div>
-
-      <h3 class="media-lead">Touch protection</h3>
-      <div class="media-row stack">
-        <figure>
-          <div class="img-frame">
-            <img class="compare" src="assets/game-booster-touch-before-after.webp" alt="Touch protection before and after: above, the clock, battery, unlock prompt, brightness and lock duration are stacked down the centre of the dimmed screen; below, only the unlock target keeps the centre while the clock sits top-left, the battery in a pill top-right, and brightness and duration at the right edge" width="1128" height="1069" loading="lazy">
+        </div>
+        <div>
+          <h3 class="media-lead">Touch protection</h3>
+          <div class="media-row stack">
+            <figure>
+              <div class="img-frame">
+                <img class="compare" src="assets/game-booster-touch-before-after.webp" alt="Touch protection before and after: above, the clock, battery, unlock prompt, brightness and lock duration are stacked down the centre of the dimmed screen; below, only the unlock target keeps the centre while the clock sits top-left, the battery in a pill top-right, and brightness and duration at the right edge" width="1128" height="1069" loading="lazy">
+              </div>
+              <figcaption>
+                Before (top) crowds the centre with everything at once. After, only the unlock
+                target holds the middle and the rest moves to the edges — still readable, clear
+                of the action.
+              </figcaption>
+            </figure>
           </div>
-          <figcaption>
-            Before (top) crowds the centre with everything at once. After, only the unlock
-            target holds the middle and the rest moves to the edges — still readable, clear
-            of the action.
-          </figcaption>
-        </figure>
+        </div>
       </div>
 
     </article>
